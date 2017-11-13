@@ -17,13 +17,13 @@ class NumberFormatter
         $absValue = abs($number);
         switch (true) {
             case $absValue >= 999500:
-                $strValue = round($number / 1000000, 2) . 'M';
+                $strValue = number_format($number / 1000000, 2) . 'M';
                 break;
             case $absValue >= 99950:
                 $strValue = round($number / 1000) . 'K';
                 break;
             case $absValue >= 1000:
-                $strValue = round($number);
+                $strValue = number_format($number, 0, ',', ' ');
                 break;
             default:
                 if (ctype_digit($absValue)) {
