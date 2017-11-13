@@ -8,6 +8,7 @@
 
 namespace Tests\AppBundle\Service;
 
+use AppBundle\Service\NumberFormatter;
 use PHPUnit\Framework\TestCase;
 
 class NumberFormatterTest extends TestCase
@@ -17,14 +18,15 @@ class NumberFormatterTest extends TestCase
      */
     public function testFormat(float $input, string $expected)
     {
-        $this->assertEquals($expected, $input);
+        $numberFormatter = new NumberFormatter();
+        $this->assertEquals($expected, $numberFormatter->format($input));
     }
 
     public function formattedNumberProvider()
     {
         return [
             [0, '0'],
-            [28355779, '2.84M'],
+            [2835779, '2.84M'],
             [535216, '535K'],
             [99950, '100K'],
             [27533.78, '27534'],
