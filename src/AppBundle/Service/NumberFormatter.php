@@ -13,6 +13,6 @@ class NumberFormatter
 {
     public function format(float $numberFormatter)
     {
-
+        
     }
 }
