@@ -8,31 +8,23 @@
 
 namespace AppBundle\Service;
 
-
 class NumberFormatter
 {
     public function format(float $number): string
     {
-        $strValue = '';
         $absValue = abs($number);
         switch (true) {
             case $absValue >= 999500:
-                $strValue = number_format($number / 1000000, 2) . 'M';
-                break;
+                return number_format($number / 1000000, 2) . 'M';
             case $absValue >= 99950:
-                $strValue = round($number / 1000) . 'K';
-                break;
+                return round($number / 1000) . 'K';
             case $absValue >= 1000:
-                $strValue = number_format($number, 0, ',', ' ');
-                break;
+                return number_format($number, 0, ',', ' ');
             default:
                 if (ctype_digit($absValue)) {
-                    $strValue = $number;
-                } else {
-                    $strValue = round($number, 2);
+                    return $number;
                 }
+                return round($number, 2);
         }
-
-        return $strValue;
     }
 }
