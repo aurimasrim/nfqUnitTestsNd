@@ -21,8 +21,9 @@ class NumberFormatter
             case $absValue >= 1000:
                 return number_format($number, 0, ',', ' ');
             default:
+                $absValue = (string)round($absValue, 2);
                 if (ctype_digit($absValue)) {
-                    return $number;
+                    return number_format($number, 0, ',', ' ');
                 }
                 return round($number, 2);
         }
